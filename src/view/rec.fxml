@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="580.0" prefWidth="581.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="oa.control.RecControl">
+  <!-- TODO Add Nodes -->
+  <children>
+    <VBox fx:id="vbox_1" prefHeight="475.0" prefWidth="581.0" styleClass="background" AnchorPane.bottomAnchor="-1.5" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.5">
+      <children>
+        <Pane prefHeight="57.0" prefWidth="581.0">
+          <children>
+            <Label layoutX="256.0" layoutY="14.0" prefHeight="43.0" prefWidth="69.0" text="收货">
+              <font>
+                <Font name="Baskerville Old Face" size="30.0" />
+              </font>
+            </Label>
+          </children>
+        </Pane>
+        <HBox prefHeight="29.0" prefWidth="581.0">
+          <children>
+            <Pane prefHeight="29.0" prefWidth="105.0">
+              <children>
+                <Label layoutX="18.0" layoutY="4.0" prefWidth="68.99990000000253" text="订单号:">
+                  <font>
+                    <Font size="20.0" fx:id="x1" />
+                  </font>
+                </Label>
+              </children>
+              <HBox.margin>
+                <Insets fx:id="x6" />
+              </HBox.margin>
+            </Pane>
+            <TextField id="item" fx:id="order_code" prefHeight="29.0" prefWidth="462.0" promptText="订单号" />
+          </children>
+          <VBox.margin>
+            <Insets top="20.0" fx:id="x7" />
+          </VBox.margin>
+        </HBox>
+        <HBox prefHeight="29.0" prefWidth="581.0" VBox.vgrow="NEVER">
+          <children>
+            <Pane prefHeight="29.0" prefWidth="105.0" HBox.margin="$x6">
+              <children>
+                <Label font="$x1" layoutX="18.0" layoutY="-1.0" prefWidth="68.99990000000253" text="物料号:" />
+              </children>
+            </Pane>
+            <TextField fx:id="item" onKeyTyped="#queryMateriel" prefHeight="29.0" prefWidth="462.0" promptText="物料号" />
+          </children>
+          <VBox.margin>
+            <Insets top="20.0" fx:id="x7" />
+          </VBox.margin>
+        </HBox>
+        <HBox prefHeight="29.0" prefWidth="581.0" VBox.margin="$x7">
+          <children>
+            <Pane prefHeight="29.0" prefWidth="105.0">
+              <children>
+                <Label font="$x1" layoutX="18.0" layoutY="4.0" prefWidth="68.99990000000253" text="收货数:" />
+              </children>
+            </Pane>
+            <TextField fx:id="shipNumber" prefHeight="29.0" prefWidth="462.0" promptText="收货数" />
+          </children>
+        </HBox>
+        <HBox id="currentLocation" prefHeight="29.0" prefWidth="581.0" VBox.margin="$x7">
+          <children>
+            <Pane prefHeight="29.0" prefWidth="105.0">
+              <children>
+                <Label font="$x1" layoutX="18.0" layoutY="4.0" prefWidth="68.99990000000253" text="库位(C)" />
+              </children>
+            </Pane>
+            <TextField id="shipNumber" fx:id="currentLocation" prefHeight="29.0" prefWidth="462.0" promptText="当前库位" />
+          </children>
+        </HBox>
+        <HBox id="dest" prefHeight="29.0" prefWidth="581.0" VBox.margin="$x7">
+          <children>
+            <Pane prefHeight="29.0" prefWidth="105.0">
+              <children>
+                <Label font="$x1" layoutX="18.0" layoutY="4.0" prefWidth="68.99990000000253" text="库位(D)" />
+              </children>
+            </Pane>
+            <TextField id="shipNumber" fx:id="destinationLocation" prefHeight="29.0" prefWidth="462.0" promptText="来源库位" text="" />
+          </children>
+        </HBox>
+        <GridPane prefHeight="153.0" prefWidth="581.0">
+          <children>
+            <Label text="详情:" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+              <font>
+                <Font name="Yu Gothic UI Light" size="20.0" fx:id="x2" />
+              </font>
+            </Label>
+            <Label fx:id="materiel_detail" text="无数据" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+              <font>
+                <Font name="Yu Gothic UI Light" size="18.0" fx:id="x3" />
+              </font>
+            </Label>
+            <Label font="$x2" text="单包装:" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label font="$x2" text="供货商:" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label fx:id="materiel_qty" font="$x3" text="无数据" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label id="materiel_supp" fx:id="materiel_supplier" font="$x3" text="无数据" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label font="$x2" text="物料类型:" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label fx:id="materiel_type" font="$x3" text="无数据" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label font="$x2" text="非限制正常：" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Label fx:id="NRN" font="$x3" text="无数据" textOverrun="ELLIPSIS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Label font="$x2" text="库位详情:" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <Label fx:id="locationDetail" font="$x3" text="无数据" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+          <VBox.margin>
+            <Insets top="40.0" />
+          </VBox.margin>
+        </GridPane>
+        <HBox minHeight="25.400390625" prefHeight="43.0" prefWidth="581.0" VBox.margin="$x7">
+          <children>
+            <Button mnemonicParsing="false" onMouseClicked="#applyORD" prefHeight="43.000099999997474" text="保存">
+              <font>
+                <Font name="Arial" size="25.0" fx:id="x4" />
+              </font>
+              <HBox.margin>
+                <Insets left="120.0" />
+              </HBox.margin>
+            </Button>
+            <Button id="close_ship" font="$x4" mnemonicParsing="false" onMouseClicked="#closeShipView" prefHeight="43.0" text="关闭">
+              <HBox.margin>
+                <Insets left="150.0" fx:id="x5" />
+              </HBox.margin>
+            </Button>
+          </children>
+        </HBox>
+      </children>
+      <stylesheets>
+        <URL value="@Ship.css" />
+      </stylesheets>
+    </VBox>
+  </children>
+</AnchorPane>

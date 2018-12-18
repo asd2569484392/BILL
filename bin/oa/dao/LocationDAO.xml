@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="oa.dao.LocationDAO">
+
+	<insert id="initLocation" parameterType="oa.bean.Location">
+		insert into location
+		(
+		location_id,
+		materiel_number,
+		materiel_detail,
+		materiel_group_code,
+		location_detail,
+		materiel_unit,
+		materiel_NRO,
+		materiel_UO,
+		materiel_PRC,
+		materiel_FO,
+		materiel_FC,
+		materiel_FCO,
+		materiel_CS,
+		materiel_CN,
+		materiel_OIC,
+		remarks,
+		openingInentory
+		)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.locationId},
+			#{item.materielNumber},
+			#{item.materielDetail},
+			#{item.materielGroupCode},
+			#{item.locationDetail},
+			#{item.materielUnit},
+			#{item.materielNRO},
+			#{item.materielUO},
+			#{item.materielPRC},
+			#{item.materielFO},
+			#{item.materielFC},
+			#{item.materielFCO},
+			#{item.materielCS},
+			#{item.materielCN},
+			#{item.materielOIC},
+			#{item.remarks},
+			#{item.materielNRO}
+			)
+		</foreach>
+	</insert>
+
+	<insert id="insertOrUpdate" parameterType="java.util.List">
+		REPLACE INTO location
+		(location_id,
+		materiel_number,
+		materiel_detail,
+		materiel_group_code,
+		location_detail,
+		materiel_unit,
+		materiel_NRO,
+		materiel_UO,
+		materiel_PRC,
+		materiel_FO,
+		materiel_FC,
+		materiel_FCO,
+		materiel_CS,
+		materiel_CN,
+		materiel_OIC,
+		remarks)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.locationId},
+			#{item.materielNumber},
+			#{item.materielDetail},
+			#{item.materielGroupCode},
+			#{item.locationDetail},
+			#{item.materielUnit},
+			#{item.materielNRO},
+			#{item.materielUO},
+			#{item.materielPRC},
+			#{item.materielFO},
+			#{item.materielFC},
+			#{item.materielFCO},
+			#{item.materielCS},
+			#{item.materielCN},
+			#{item.materielOIC},
+			#{item.remarks}
+			)
+		</foreach>
+	</insert>
+
+
+	<resultMap type="oa.bean.Location" id="location">
+		<id column="location_id" property="locationId" javaType="int" />
+		<result column="materiel_number" property="materielNumber"
+			javaType="String" />
+		<result column="materiel_detail" property="materielDetail"
+			javaType="String" />
+		<result column="materiel_group_code"
+			property="materielGroupCode" javaType="String" />
+		<result column="location_detail" property="locationDetail"
+			javaType="String" />
+		<result column="materiel_unit" property="materielUnit"
+			javaType="String" />
+		<result column="materiel_NRO" property="materielNRO"
+			javaType="Double" />
+		<result column="materiel_UO" property="materielUO" />
+		<result column="materiel_PRC" property="materielPRC" />
+		<result column="materiel_FO" property="materielFO" />
+		<result column="materiel_FC" property="materielFC" />
+		<result column="materiel_FCO" property="materielFCO" />
+		<result column="materiel_CS" property="materielCS" />
+		<result column="materiel_CN" property="materielCN" />
+		<result column="materiel_OIC" property="materielOIC" />
+		<result column="remarks" property="remarks" />
+	</resultMap>
+
+
+	<select id="queryAll" resultMap="location">
+		SELECT * FROM location;
+	</select>
+
+	<select id="queryLocationById" parameterType="String"
+		resultMap="location">
+		SELECT * FROM location WHERE materiel_number = #{item}
+	</select>
+
+	<update id="subNRO">
+		UPDATE location SET
+		materiel_NRO =
+		materiel_NRO -
+		#{shipNumber} WHERE materiel_number = #{item}
+	</update>
+	<update id="addNRO">
+		UPDATE location SET
+		materiel_NRO =
+		materiel_NRO +
+		#{recNumber} WHERE materiel_number = #{item}
+	</update>
+	<select id="queryLocationCount" resultType="int">
+		select count(*) from
+		location;
+	</select>
+</mapper>

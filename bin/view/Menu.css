@@ -1,0 +1,162 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.box-1{
+	-fx-background-color: #008287;
+}
+Pane:hover{
+	-fx-border-style: solid;
+	-fx-border-color: white;
+	-fx-border-width: 3.0;
+}
+
+.box-2{
+	-fx-background-color: #e3a21a;
+}
+.box-3{
+	-fx-background-color: #03b8cf;
+}
+.box-4{
+	-fx-background-color: #393e46;
+}
+.box-5{
+	-fx-background-color: #603cba;
+}
+.box-6{
+	-fx-background-color: #d0dfe6;
+}
+.box-7{
+	-fx-background-color: #72b095;
+}
+.top{
+	-fx-background-color: #1d1d1d;
+}
+.top:hover{
+	-fx-background-color: #1d1d1d;
+	-fx-border-width: 0;
+}
+.pane{
+	-fx-background-image:url('../resource/wallhaven-93315.jpg')fixed; 
+	-fx-background-size:100.0%,100.0%;
+}
+.icon{
+	-fx-background-color: #ffffff;
+}
+.close{
+	-fx-alignment: center-right ;
+}
+.close:hover{
+	-fx-background-color: #f0f0f0;	
+}
+.alertMessage{
+	-fx-background-color: #1d1d1d;
+}
+.enter{
+	-fx-background-color:#0000cc ;
+}
+.enter:hover{
+	-fx-background-color:#1d4fd4 ;
+	-fx-border-style: none ;
+	-fx-border-width: 0;
+}
+.alertMessage:hover{
+	-fx-border-style: none ;
+	-fx-border-width: 0.0;
+}
+.clear{
+	-fx-background-color: #ffffff;
+}
+.clear:hover{
+	-fx-background-color: #808080;
+}
+.mask{
+	-fx-background-color: #000000;
+	-fx-border-width:0.0;
+}
+.hover-canlen{
+	-fx-border-style: solid;
+	-fx-border-color: white;
+	-fx-border-width: 3.0;	
+}
+.hover-canlen:hover{
+	
+}
+.BOM{
+	-fx-background-color: #1e4c7e;
+}
+.omss{
+	-fx-border-width: 0;	
+	-fx-background-color: #000000;
+}
+.SystemInfo{
+	-fx-border-width: 0;	
+	-fx-background-color:#bdc3c7;
+}
+
+
+ 
+
+.root{
+    -fx-background-color: #262626;
+}
+
+.table-view{
+   -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+/* Spaltenköpfe
+    Struktur column-header-background -> column-header */
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #616161;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */  
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background, 
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button, 
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0;
+}

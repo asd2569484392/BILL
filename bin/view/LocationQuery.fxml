@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="804.0" prefWidth="1195.999933789055" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <VBox prefHeight="804.0" prefWidth="1195.0002999999924" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <children>
+        <TableView prefHeight="700.0" prefWidth="1196.0">
+          <columns>
+            <TableColumn prefWidth="75.0" text="库位代码" />
+            <TableColumn prefWidth="75.0" text="零件号" />
+            <TableColumn prefWidth="75.0" text="零件描述" />
+            <TableColumn prefWidth="75.0" text="物料组代码" />
+            <TableColumn prefWidth="75.0" text="库位" />
+            <TableColumn prefWidth="75.0" text="单位" />
+            <TableColumn prefWidth="75.0" text="非限制正常" />
+            <TableColumn prefWidth="75.0" text="非限制委外" />
+            <TableColumn prefWidth="75.0" text="非限制寄售" />
+            <TableColumn prefWidth="75.0" text="冻结正常" />
+            <TableColumn prefWidth="75.0" text="冻结委外" />
+            <TableColumn prefWidth="75.0" text="冻结寄售" />
+            <TableColumn prefWidth="75.0" text="待检正常" />
+            <TableColumn prefWidth="75.0" text="待检委外" />
+            <TableColumn prefWidth="75.0" text="待检寄售" />
+            <TableColumn prefWidth="75.0" text="备注" />
+          </columns>
+        </TableView>
+      </children>
+      <padding>
+        <Insets />
+      </padding>
+    </VBox>
+    <HBox layoutX="14.0" layoutY="14.0" prefHeight="76.0" prefWidth="1168.0">
+      <children>
+        <TextField prefHeight="53.0" prefWidth="1147.000244140625" promptText="物料号">
+          <HBox.margin>
+            <Insets top="10.0" />
+          </HBox.margin>
+        </TextField>
+      </children>
+      <padding>
+        <Insets left="20.0" />
+      </padding>
+    </HBox>
+  </children>
+</AnchorPane>

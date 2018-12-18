@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="oa.dao.BomDAO">
+	<insert id="initBOM" parameterType="oa.bean.Materiel">
+		insert into bom
+		(
+		materiel_id,
+		materiel_detail,
+		materiel_package,
+		materiel_supplier,
+		materiel_type
+		)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.materiel_id},
+			#{item.materiel_detail},
+			#{item.materiel_package},
+			#{item.materiel_supplier},
+			#{item.materiel_type}
+			)
+		</foreach>
+
+	</insert>
+
+	<select id="queryAllBomData" resultType="oa.bean.Materiel">
+		select * from bom;
+	</select>
+
+	<select id="queryCurrentMaterielLength" resultType="int">
+		SELECT
+		COUNT(*) FROM bom ;
+	</select>
+
+	<insert id="insertOrUpdate" parameterType="java.util.List">
+		REPLACE INTO bom
+		(materiel_id,materiel_detail,materiel_package,materiel_supplier,materiel_type)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.materiel_id},
+			#{item.materiel_detail},
+			#{item.materiel_package},
+			#{item.materiel_supplier},
+			#{item.materiel_type}
+			)
+		</foreach>
+	</insert>
+
+	<select id="queryMaterielByItem" parameterType="String"
+		resultType="oa.bean.Materiel">
+		SELECT
+		materiel_detail,materiel_package,materiel_supplier,materiel_type FROM bom WHERE
+		materiel_id = #{item}
+	</select>
+</mapper>

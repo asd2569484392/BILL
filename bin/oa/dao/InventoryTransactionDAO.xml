@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="oa.dao.InventoryTransactionDAO">
+
+	<insert id="addInventoryTransaction"
+		parameterType="oa.bean.Inventorytransaction">
+		INSERT INTO inventorytransaction
+		VALUES(#{orderCode},#{actionType},#{date},#{number},#{item},#{currentLocation},#{destinationLocation});
+	</insert>
+
+	<select id="queryAllInventoryTransaction"
+		resultMap="Inventorytransaction">
+		SELECT * from inventorytransaction
+	</select>
+
+	<select id="queryInventoryTransactionByItem"
+		resultMap="Inventorytransaction" parameterType="String">
+		SELECT * FROM
+		inventorytransaction WHERE item LIKE "${_parameter}%"
+	</select>
+
+	<resultMap type="oa.bean.Inventorytransaction"
+		id="Inventorytransaction">
+
+		<result column="order_code" property="orderCode" />
+		<result column="action_type" property="actionType" />
+		<result column="number" property="number" />
+		<result column="item" property="item" />
+		<result column="date" property="date" />
+		<result column="current_location" property="currentLocation" />
+		<result column="destination_location"
+			property="destinationLocation" />
+
+	</resultMap>
+
+	<select id="queryAllDate" resultType="String">
+		SELECT date FROM
+		inventorytransaction GROUP BY date
+	</select>
+
+	<select id="queryInventoryTransactionByDate"
+		resultMap="Inventorytransaction">
+		SELECT * FROM inventorytransaction WHERE date =
+		"${_parameter}"
+	</select>
+
+	<select id="queryInventoryTransactionByDateOnBetween"
+		resultMap="Inventorytransaction">
+		SELECT * from inventorytransaction WHERE date &gt;=
+		#{date_1} AND date &lt;= #{date_2}
+	</select>
+
+
+	<resultMap type="oa.bean.Sum" id="sum">
+		<result column="item" property="item" />
+		<result column="ship" property="ship" />
+		<result column="rec" property="rec" />
+	</resultMap>
+
+	<select id="queryInventoryTransactionByDateAndSun"
+		resultMap="sum">
+		SELECT item,
+		IFNULL((SELECT SUM(number) FROM
+		inventorytransaction
+		WHERE action_type = "SHIP"
+		AND date &gt;= #{date_1}
+		AND date &lt;= #{date_2}
+		AND item = #{item}),0)
+		AS ship,
+		IFNULL((SELECT
+		SUM(number) FROM
+		inventorytransaction
+		WHERE
+		action_type
+		= "REC"
+		AND date
+		&gt;= #{date_1}
+		AND date &lt;= #{date_2}
+		AND
+		item =
+		#{item}),0) AS
+		rec
+		FROM
+		inventorytransaction WHERE item = #{item}
+		AND date
+		&gt;= #{date_1} AND
+		date &lt;= #{date_2}
+		GROUP BY item;
+
+	</select>
+
+	<select id="queryInventoryTransactionGroupByItem"
+		resultType="String">
+		SELECT item FROM inventorytransaction GROUP BY item
+	</select>
+</mapper>

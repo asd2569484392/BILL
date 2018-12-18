@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="menu" onMouseClicked="#mainMenuOnClick" prefHeight="701.9998779296875" prefWidth="892.0000999999975" styleClass="pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="oa.control.MenuControl">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Pane fx:id="ship" layoutX="359.0" layoutY="53.0" onMouseClicked="#shipAction" opacity="0.91" prefHeight="108.0" prefWidth="323.0" styleClass="box-5">
+      <children>
+        <Label layoutX="122.0" layoutY="27.0" prefHeight="53.25" prefWidth="80.0" text="发货" textFill="WHITE">
+          <font>
+            <Font name="Arial Rounded MT Bold" size="30.0" fx:id="x1" />
+          </font>
+        </Label>
+      </children>
+    </Pane>
+    <Pane layoutX="21.0" layoutY="176.0" onMouseClicked="#openExportPane" opacity="1.0" prefHeight="108.0" prefWidth="323.0000999999975" styleClass="box-3">
+      <children>
+        <Label font="$x1" layoutX="94.0" layoutY="27.0" prefHeight="53.25" prefWidth="215.0" text="导出库存报表" textFill="WHITE" />
+        <ImageView fitHeight="53.249993039340666" fitWidth="70.99999237060547" layoutX="29.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../resource/excel.png" />
+          </image>
+        </ImageView>
+      </children>
+    </Pane>
+    <Pane fx:id="rec" layoutX="359.0" layoutY="176.0" onMouseClicked="#recAction" opacity="0.88" prefHeight="108.0" prefWidth="323.0000999999975" styleClass="box-4">
+      <children>
+        <Label font="$x1" layoutX="125.0" layoutY="27.0" prefHeight="53.25" prefWidth="73.0" text="收货" textFill="WHITE" />
+      </children>
+    </Pane>
+    <Pane id="ITView" layoutX="16.0" layoutY="300.0" opacity="1.0" prefHeight="389.0" prefWidth="661.0" styleClass="omss">
+      <children>
+        <HBox layoutX="0.0" layoutY="8.0" prefHeight="39.5947265625" prefWidth="653.0">
+          <children>
+            <Label prefHeight="36.0" prefWidth="150.0" text="库存事务" textFill="WHITE">
+              <font>
+                <Font name="Arial Narrow" size="30.0" />
+              </font>
+              <HBox.margin>
+                <Insets left="10.0" />
+              </HBox.margin>
+            </Label>
+            <TextField fx:id="queryItem" onKeyTyped="#queryIT" prefHeight="31.982421875" prefWidth="198.0" promptText="物料号" style="-fx-background-radius: 0;  &#10;" text="">
+              <HBox.margin>
+                <Insets left="80.0" top="3.0" fx:id="x7" />
+              </HBox.margin>
+            </TextField>
+            <MenuButton fx:id="dataList" mnemonicParsing="false" prefHeight="31.9998779296875" prefWidth="136.0" style="-fx-background-radius: 0;  &#10;-fx-background-color: #0097a7&#10;" text="日期查询" HBox.margin="$x7" />
+          </children>
+        </HBox>
+        <TableView fx:id="ITTable" layoutX="0.0" layoutY="54.0" prefHeight="333.0" prefWidth="661.0">
+          <columns>
+            <TableColumn minWidth="100.0" prefWidth="100.0" text="订单号" />
+            <TableColumn minWidth="100.0" prefWidth="94.0" text="收发" />
+            <TableColumn minWidth="94.0" prefWidth="94.0" text="物料号" />
+            <TableColumn minWidth="94.0" prefWidth="94.0" text="数量" />
+            <TableColumn minWidth="94.0" prefWidth="94.0" text="日期" />
+            <TableColumn minWidth="130.0" prefWidth="94.0" text="来源库位" />
+            <TableColumn minWidth="130.0" prefWidth="94.0" text="目的库位" />
+          </columns>
+        </TableView>
+      </children>
+      <stylesheets>
+        <URL value="@../../../bin/oa/view/Menu.css" />
+      </stylesheets>
+    </Pane>
+    <Pane layoutX="0.0" prefHeight="40.0" prefWidth="892.0" styleClass="top" AnchorPane.topAnchor="0.0">
+      <children>
+        <ImageView fx:id="exit" blendMode="SRC_OVER" fitHeight="39.999900000002526" fitWidth="39.999900000002526" layoutX="852.0" layoutY="0.0" onMouseClicked="#exitApp" pickOnBounds="true" preserveRatio="true" style="" styleClass="hover-canlen">
+          <image>
+            <Image url="@../resource/close-hover.png" />
+          </image>
+        </ImageView>
+        <Label layoutX="56.0" layoutY="7.0" text="手工账单" textFill="WHITE">
+          <font>
+            <Font name="System Italic" size="20.0" />
+          </font>
+        </Label>
+      </children>
+    </Pane>
+    <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="8.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" style="">
+      <image>
+        <Image url="@../resource/menu.png" />
+      </image>
+    </ImageView>
+    <Label font="$x1" layoutX="115.0" layoutY="95.0" prefHeight="53.25" prefWidth="215.0" text="" textFill="WHITE" />
+    <Pane fx:id="Import" layoutX="21.0" layoutY="53.0" onMouseClicked="#selectExcel" prefHeight="108.0" prefWidth="324.0" styleClass="box-1">
+      <children>
+        <Label font="$x1" layoutX="94.0" layoutY="27.0" prefHeight="53.25" prefWidth="215.0" text="导入物料清单" textFill="WHITE" />
+        <ImageView fitHeight="53.249993039340666" fitWidth="70.99999237060547" layoutX="22.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../resource/excel.png" />
+          </image>
+        </ImageView>
+      </children>
+    </Pane>
+    <Pane id="bom" fx:id="bomPane" layoutX="687.0" layoutY="298.0" onMouseClicked="#showBomInfo" opacity="1.0" prefHeight="389.0" prefWidth="187.0" styleClass="BOM">
+      <children>
+        <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="66.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../resource/BOM.png" />
+          </image>
+        </ImageView>
+        <Label layoutX="37.0" layoutY="116.0" prefHeight="40.0" prefWidth="106.0" text="主数据信息" textFill="#baff99">
+          <font>
+            <Font name="Arial Black" size="20.0" />
+          </font>
+        </Label>
+        <Label layoutX="51.0" layoutY="188.0" prefHeight="36.0" text="最近更新:">
+          <font>
+            <Font name="Arial Narrow" size="20.0" />
+          </font>
+          <textFill>
+            <Color blue="0.800" green="0.992" red="1.000" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Label fx:id="update_time" layoutX="48.0" layoutY="260.0" prefHeight="36.0" text="2019/7/08" textFill="$x4">
+          <font>
+            <Font name="Arial Narrow" size="25.0" fx:id="x3" />
+          </font>
+        </Label>
+      </children>
+    </Pane>
+    <Pane layoutX="691.0" layoutY="53.0" onMouseClicked="#initLocation" prefHeight="108.0" prefWidth="187.0" styleClass="box-6">
+      <children>
+        <Label layoutX="19.0" layoutY="65.0" text="导入库存信息" underline="false" wrapText="true">
+          <font>
+            <Font name="Microsoft PhagsPa" size="25.0" fx:id="x6" />
+          </font>
+        </Label>
+        <ImageView fitHeight="37.5947265625" fitWidth="37.5947265625" layoutX="75.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../resource/import.png" />
+          </image>
+        </ImageView>
+      </children>
+      <stylesheets>
+        <URL value="@Menu.css" />
+      </stylesheets>
+    </Pane>
+    <Pane layoutX="691.0" layoutY="176.0" onMouseClicked="#queryLocation" prefHeight="108.0" prefWidth="187.0" styleClass="box-7">
+      <children>
+        <Label font="$x6" layoutX="40.0" layoutY="62.0" text="库存查询" underline="false" wrapText="true" />
+        <ImageView fitHeight="37.5947265625" fitWidth="37.5947265625" layoutX="71.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../resource/query.png" />
+          </image>
+        </ImageView>
+      </children>
+      <stylesheets>
+        <URL value="file:/D:/JavaProject/FX/OA/src/oa/view/Menu.css" />
+      </stylesheets>
+    </Pane>
+    <Pane fx:id="mask" opacity="0.5" prefHeight="800.0" prefWidth="1200.0" styleClass="mask" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <Pane fx:id="alertMessage" layoutX="124.0" layoutY="291.0" opacity="1.0" prefHeight="123.0" prefWidth="646.0" styleClass="alertMessage" visible="false">
+      <children>
+        <Label fx:id="alertTitle" layoutX="27.0" layoutY="14.0" prefHeight="36.0" prefWidth="150.0" text="确认退出?" textFill="WHITE">
+          <font>
+            <Font size="20.0" />
+          </font>
+        </Label>
+        <Pane fx:id="ok" layoutX="270.0" layoutY="62.0" onMouseClicked="#enter" opacity="0.93" prefHeight="47.0" prefWidth="105.99993896484375" styleClass="enter">
+          <children>
+            <Label fx:id="enter_ok" layoutX="28.0" layoutY="8.0" text="确定" textAlignment="LEFT">
+              <font>
+                <Font size="25.0" fx:id="x2" />
+              </font>
+              <textFill>
+                <Color blue="0.875" green="0.875" red="0.875" fx:id="x5" />
+              </textFill>
+            </Label>
+          </children>
+          <stylesheets>
+            <URL value="@../../../bin/oa/view/Menu.css" />
+          </stylesheets>
+        </Pane>
+        <Pane id="cancel" fx:id="esc" layoutX="526.0" layoutY="62.0" prefHeight="47.0001220703125" prefWidth="106.0" styleClass="clear">
+          <children>
+            <Label font="$x2" layoutX="28.0" layoutY="8.0" text="取消" textAlignment="LEFT" textFill="BLACK" />
+          </children>
+          <stylesheets>
+            <URL value="@../../../bin/oa/view/Menu.css" />
+          </stylesheets>
+        </Pane>
+        <Pane id="ok" fx:id="alert_override" layoutX="397.0" layoutY="62.0" onMouseClicked="#enter" opacity="0.93" prefHeight="47.0" prefWidth="106.0" styleClass="enter" visible="false">
+          <children>
+            <Label id="enter_ok" font="$x2" layoutX="28.0" layoutY="8.0" text="覆盖" textAlignment="LEFT" textFill="$x5" />
+          </children>
+          <stylesheets>
+            <URL value="file:/D:/JavaProject/FX/OA/bin/oa/view/Menu.css" />
+          </stylesheets>
+        </Pane>
+      </children>
+      <stylesheets>
+        <URL value="@../../../bin/oa/view/Menu.css" />
+      </stylesheets>
+    </Pane>
+  </children>
+  <stylesheets>
+    <URL value="@Menu.css" />
+  </stylesheets>
+</AnchorPane>
